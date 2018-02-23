@@ -1,0 +1,2 @@
+# PracticeLeetCode
+some practices
