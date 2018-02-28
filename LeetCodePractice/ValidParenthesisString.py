@@ -7,19 +7,11 @@ Created on Wed Feb 28 10:23:38 2018
 """
 
 def checkValidString(s):
-    left = 0
-    right = len(s) - 1
-    if len(s) == 0 :
-        return True
-    else:
-        while left < right:
-            if s[left] != "(" and s[left] != "*":
-                return False
-            if s[right] != ")" and s[right] != "*":
-                return False
-            else:
-                left += 1
-                right -= 1
-    return True
-
-checkValidString("C")
+    lo = hi = 0
+    for char in s:
+        lo += 1 if char == "(" else -1
+        hi += 1 if char != ")" else -1
+        if hi < 0:
+            break
+        lo = max(lo, 0)
+    return lo == 0
